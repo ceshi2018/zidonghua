@@ -1,0 +1,162 @@
+<ns0:test-suite xmlns:ns0="urn:model.allure.qatools.yandex.ru" start="1534906064441" stop="1534906166560">
+  <name>test_login</name>
+  <labels/>
+  <test-cases>
+    <test-case start="1534906064441" status="passed" stop="1534906122615">
+      <description>
+        :param test_num: 用例编号
+        :param username: 用户名
+        :param password: 密码
+        :param expect_message: 预期结果
+        :param toast_ms: toast消息获取文本
+        :return:
+        </description>
+      <name>Test_Login.test_login[test_login_001-13488834010-159357li-\u6211\u7684\u4f18\u60e0\u5238-1-None]</name>
+      <attachments/>
+      <labels>
+        <label name="severity" value="normal"/>
+        <label name="thread" value="12416-MainThread"/>
+        <label name="host" value="LAPTOP-QU5S7PD5"/>
+        <label name="framework" value="pytest"/>
+        <label name="language" value="cpython3"/>
+      </labels>
+      <steps/>
+    </test-case>
+    <test-case start="1534906122658" status="passed" stop="1534906136991">
+      <description>
+        :param test_num: 用例编号
+        :param username: 用户名
+        :param password: 密码
+        :param expect_message: 预期结果
+        :param toast_ms: toast消息获取文本
+        :return:
+        </description>
+      <name>Test_Login.test_login[test_login_003-13488834010 -159357li-\u6211\u7684\u4f18\u60e0\u5238-1-None]</name>
+      <attachments/>
+      <labels>
+        <label name="severity" value="normal"/>
+        <label name="thread" value="12416-MainThread"/>
+        <label name="host" value="LAPTOP-QU5S7PD5"/>
+        <label name="framework" value="pytest"/>
+        <label name="language" value="cpython3"/>
+      </labels>
+      <steps/>
+    </test-case>
+    <test-case start="1534906136994" status="passed" stop="1534906151162">
+      <description>
+        :param test_num: 用例编号
+        :param username: 用户名
+        :param password: 密码
+        :param expect_message: 预期结果
+        :param toast_ms: toast消息获取文本
+        :return:
+        </description>
+      <name>Test_Login.test_login[test_login_004- 13488834010-159357li-\u6211\u7684\u4f18\u60e0\u5238-1-None]</name>
+      <attachments/>
+      <labels>
+        <label name="severity" value="normal"/>
+        <label name="thread" value="12416-MainThread"/>
+        <label name="host" value="LAPTOP-QU5S7PD5"/>
+        <label name="framework" value="pytest"/>
+        <label name="language" value="cpython3"/>
+      </labels>
+      <steps/>
+    </test-case>
+    <test-case start="1534906151164" status="failed" stop="1534906158955">
+      <description>
+        :param test_num: 用例编号
+        :param username: 用户名
+        :param password: 密码
+        :param expect_message: 预期结果
+        :param toast_ms: toast消息获取文本
+        :return:
+        </description>
+      <name>Test_Login.test_login[test_login_014-13488834010-159357-\u767b\u5f55\u5bc6\u7801\u9519\u8bef1-None-\u9519\u8bef]</name>
+      <failure>
+        <message>AssertionError: assert (True and '登录密码错误1' == '登录密码错误'
+  - 登录密码错误1
+  ?       -
+  + 登录密码错误)</message>
+        <stack-trace>self = &lt;test_login.Test_Login object at 0x000001C36BAE73C8&gt;
+test_num = 'test_login_014', username = '13488834010', password = '159357'
+expect_message = '登录密码错误1', tag = None, toast_ms = '错误'
+
+    @pytest.mark.parametrize("test_num,username,password,expect_message,tag,toast_ms", cup_data())
+    def test_login(self, test_num,username,password,expect_message,tag,toast_ms):
+        """
+            :param test_num: 用例编号
+            :param username: 用户名
+            :param password: 密码
+            :param expect_message: 预期结果
+            :param toast_ms: toast消息获取文本
+            :return:
+            """
+        # 点击我
+        self.page_obj.get_home_page().click_my_btn()
+        # 点击已有账户 去登陆
+        self.page_obj.get_sign_page().click_exit_account()
+        # 登陆操作
+        self.page_obj.get_login_page().login(username, password)
+        # 断言
+        if tag:
+            # 执行预期成功
+            try:
+                # 获取我的优惠券
+                coupons_text = self.page_obj.get_person_page().get_coupons_text()
+                assert expect_message == coupons_text
+                # 点击设置按钮
+                self.page_obj.get_person_page().click_setting()
+                # 执行退出登录
+                self.page_obj.get_setting_page().logot()
+            except:
+                # 关闭登陆页面
+                self.page_obj.get_login_page().close_login_page()
+                assert False
+        else:
+            try:
+                # 执行预期失败
+                # 获取toast消息
+                toast_message = self.page_obj.get_person_page().get_toast(toast_ms)
+                # 判断登录是否存在
+                login_if_exit = self.page_obj.get_login_page().if_login_btn()
+                # 断言
+&gt;               assert login_if_exit and expect_message == toast_message
+E               AssertionError: assert (True and '登录密码错误1' == '登录密码错误'
+E                 - 登录密码错误1
+E                 ?       -
+E                 + 登录密码错误)
+
+Scripts\test_login.py:67: AssertionError</stack-trace>
+      </failure>
+      <attachments/>
+      <labels>
+        <label name="severity" value="normal"/>
+        <label name="thread" value="12416-MainThread"/>
+        <label name="host" value="LAPTOP-QU5S7PD5"/>
+        <label name="framework" value="pytest"/>
+        <label name="language" value="cpython3"/>
+      </labels>
+      <steps/>
+    </test-case>
+    <test-case start="1534906158958" status="passed" stop="1534906166560">
+      <description>
+        :param test_num: 用例编号
+        :param username: 用户名
+        :param password: 密码
+        :param expect_message: 预期结果
+        :param toast_ms: toast消息获取文本
+        :return:
+        </description>
+      <name>Test_Login.test_login[test_login_015-13377779999-159357-\u6b64\u7528\u6237\u4e0d\u5b58\u5728-None-\u4e0d\u5b58\u5728]</name>
+      <attachments/>
+      <labels>
+        <label name="severity" value="normal"/>
+        <label name="thread" value="12416-MainThread"/>
+        <label name="host" value="LAPTOP-QU5S7PD5"/>
+        <label name="framework" value="pytest"/>
+        <label name="language" value="cpython3"/>
+      </labels>
+      <steps/>
+    </test-case>
+  </test-cases>
+</ns0:test-suite>
